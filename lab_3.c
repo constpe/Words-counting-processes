@@ -27,6 +27,7 @@ typedef struct
 char *prog_name;
 int max_working_processes_amount;
 int working_processes_amount;
+mbstate_t state = {};
 
 void print_error(char *prog_name, char *error_message, char *error_file)
 {
@@ -43,7 +44,6 @@ void process_data_in_buffer(int *is_word, const char *current_char, ssize_t byte
  	ssize_t byte_size;
   	int is_error = 0;
   	wchar_t wide_char = 0;
-	mbstate_t state = {};
 
   	do
   	{
